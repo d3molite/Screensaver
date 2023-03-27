@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaggtusScreen", "CaggtusScreen\CaggtusScreen.csproj", "{3BD78515-8B05-419C-8D8B-873C096C82F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{3A6D5EA4-922D-4F86-8985-B05EA8496FC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A6D5EA4-922D-4F86-8985-B05EA8496FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6D5EA4-922D-4F86-8985-B05EA8496FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD78515-8B05-419C-8D8B-873C096C82F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD78515-8B05-419C-8D8B-873C096C82F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD78515-8B05-419C-8D8B-873C096C82F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD78515-8B05-419C-8D8B-873C096C82F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
