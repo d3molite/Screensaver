@@ -8,22 +8,37 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="Resources\base.mkv">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\spin.mkv">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\stars.mkv">
+        <None Update="tips.txt">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="tips.txt">
+        <None Update="Resources\base.mp4">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\cactus_spin.mp4">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\leaves.mp4">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\logo_spin.mp4">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\pride.mp4">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\salto.mp4">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LibVLCSharp" Version="3.7.0" />
+      <PackageReference Include="LibVLCSharp.WPF" Version="3.7.0" />
+      <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.18" />
     </ItemGroup>
 
 </Project>

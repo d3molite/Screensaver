@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using CaggtusScreen.Player;
 
 namespace CaggtusScreen;
 
@@ -12,7 +13,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new VideoPlayerViewModel(PlayerOne, PlayerTwo);
+        Loaded += InitializeDataContext;
+    }
+
+    private void InitializeDataContext(object sender, RoutedEventArgs e)
+    {
+        DataContext = new PlayerViewModel(VideoView);
     }
 
     protected override void OnClosed(EventArgs e)

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Forms;
 using Application = System.Windows.Application;
 
@@ -16,6 +18,7 @@ public partial class App : Application
 
     private void ApplicationStartup(object sender, StartupEventArgs e)
     {
+
         if (e.Args.Length == 0)
         {
             var window = new MainWindow

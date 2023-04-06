@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace CaggtusScreen;
+namespace CaggtusScreen.Player;
 
 public class VideoSourceManager
 {
@@ -11,12 +11,21 @@ public class VideoSourceManager
 
     private readonly Random _random = new();
 
-    private static List<string> Sources => new()
+    private const string Folder = "./Resources";
+    private static readonly string Root = AppDomain.CurrentDomain.BaseDirectory;
+
+    private static readonly List<string> Sources = new();
+
+    public VideoSourceManager()
     {
-        "base.mkv",
-        "spin.mkv",
-        "stars.mkv"
-    };
+       var files =  Directory.GetFiles(Folder);
+       
+       foreach (var file in files)
+       {
+           var name = Path.GetFileName(file);
+           Sources.Add(name);
+       }
+    }
 
     public async Task<Uri> GetRandomSourceAsync()
     {
@@ -30,20 +39,20 @@ public class VideoSourceManager
         return GetSourceUri(source);
     }
 
-    public Uri GetStartingSource()
+    public static Uri GetStartingSource()
     {
         var source = Sources[0];
         return GetSourceUri(source);
     }
 
-    private Uri GetSourceUri(string source)
+    private static Uri GetSourceUri(string source)
     {
-        return new Uri(Path.Combine("./Resources/", source), UriKind.Relative);
+        return new Uri(Path.Combine(Root, Folder, source));
     }
 
     private string GetSource()
     {
-        var isSpecial = _random.Next(0, 100) > SpecialChance;
+        var isSpecial = _random.Next(0, 100) < SpecialChance;
         return !isSpecial ? Sources[0] : Sources[_random.Next(0, Sources.Count)];
     }
 }

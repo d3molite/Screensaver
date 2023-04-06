@@ -66,7 +66,7 @@ class Build : NukeBuild
         {
             foreach (var directory in Directory.GetDirectories(OutputDirectory))
             {
-                if (!directory.Contains("Resources"))
+                if (!directory.Contains("Resources") && !directory.ToLower().Contains("vlc"))
                 {
                     Directory.Delete(directory);
                 }

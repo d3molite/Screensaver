@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Documents;
 
-namespace CaggtusScreen;
+namespace CaggtusScreen.Player;
 
 public class TipSourceManager
 {

@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpf="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
+        xmlns:player="clr-namespace:CaggtusScreen.Player"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920"
         ResizeMode="NoResize"
@@ -10,51 +12,42 @@
         WindowStyle="None"
         KeyDown="Quit"
         MouseDown="QuitTwo"
-        SnapsToDevicePixels="True">
-    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Canvas Width="1920px" Height="1080px" x:Name="PlayerCanvas">
-            <MediaElement Canvas.ZIndex="1" Source="{Binding SourceOne}" x:Name="PlayerOne"
-                          LoadedBehavior="Manual" UnloadedBehavior="Close"
-                          Visibility="{Binding PlayerOneVisibility}"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <MediaElement Canvas.ZIndex="2" Source="{Binding SourceTwo}" x:Name="PlayerTwo"
-                          LoadedBehavior="Manual" UnloadedBehavior="Close"
-                          Visibility="{Binding PlayerTwoVisibility}"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Grid Canvas.ZIndex="100" Canvas.Left="0" Canvas.Top="0"
-                  Width="{Binding ActualWidth, ElementName=PlayerCanvas}"
-                  Height="{Binding ActualHeight, ElementName=PlayerCanvas}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="0.5*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Border Grid.Column="1" Grid.Row="1" BorderBrush="{Binding Pink}" BorderThickness="4">
-                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                         <Grid.RowDefinitions>
-                             <RowDefinition Height="1*"/>
-                             <RowDefinition Height="4*"/>
-                         </Grid.RowDefinitions>
-                         <Label Grid.Row="0"
-                                Content="{Binding TipText}" 
-                                HorizontalContentAlignment="Left"
-                                VerticalContentAlignment="Top"
-                                FontSize="16" FontWeight="Bold" Foreground="Black" Background="{Binding Pink}"/>
-                         <TextBlock Grid.Row="1"
-                                    TextWrapping="Wrap"
-                                    Padding="5"
-                                Text="{Binding HintText}" FontSize="30" FontWeight="Bold" Foreground="White"/>
-                     </Grid>
-                </Border>
+        x:Name="Window"
+        SnapsToDevicePixels="True" d:DataContext="{player:PlayerViewModel }">
+    <wpf:VideoView x:Name="VideoView" 
+                   Width="{Binding ActualWidth, ElementName=Window}"
+                   Height="{Binding ActualHeight, ElementName=Window}">
+        <Grid 
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="{Binding Pink}" BorderThickness="4">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"
+                           Content="{Binding TipManager.TipText}" 
+                           HorizontalContentAlignment="Left"
+                           VerticalContentAlignment="Top"
+                           FontSize="16" FontWeight="Bold" Foreground="Black" Background="{Binding Pink}"/>
+                    <TextBlock Grid.Row="1"
+                               TextWrapping="Wrap"
+                               Padding="5"
+                               Text="{Binding TipManager.HintText}" FontSize="30" FontWeight="Bold" Foreground="White"/>
+                </Grid>
+            </Border>
                 
-            </Grid>
-        </Canvas>
-        
-    </StackPanel>
-
+        </Grid>
+    </wpf:VideoView>
 </Window>
